@@ -4,7 +4,6 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import ru.geekbrains.java.oop.at.BasePageObject;
 import ru.geekbrains.java.oop.at.OpenUrl;
 import ru.geekbrains.java.oop.at.page.content.HomePage;
@@ -22,8 +21,6 @@ public class AuthorizationPage extends BasePageObject implements OpenUrl {
 
     public AuthorizationPage(WebDriver driver) {
         super(driver);
-        //TODO вынести в наследование
-        PageFactory.initElements(driver, this);
     }
 
     @Step("авторизация пользователем c логин: {login} пароль: {password}")
@@ -34,11 +31,15 @@ public class AuthorizationPage extends BasePageObject implements OpenUrl {
         return new HomePage(driver);
     }
 
-    //TODO вынести в абстрактный класс
     @Override
     public AuthorizationPage openUrl() {
-        driver.get("https://geekbrains.ru/login");
+        openUrl("https://geekbrains.ru/login");
         return this;
+    }
+
+    @Step("Переход на страницу {url}")
+    private void openUrl(String url) {
+        driver.get(url);
     }
 }
 

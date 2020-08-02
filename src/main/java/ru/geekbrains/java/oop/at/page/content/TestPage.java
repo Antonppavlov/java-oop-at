@@ -11,7 +11,7 @@ public class TestPage extends ContentBasePage {
 
     @Override
     public TestPage openUrl() {
-        driver.get("https://geekbrains.ru/tests");
+        super.openUrl("https://geekbrains.ru/tests");
         return this;
     }
 }

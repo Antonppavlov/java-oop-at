@@ -1,17 +1,18 @@
 package ru.geekbrains.java.oop.at.page.content;
 
+import io.qameta.allure.Step;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.geekbrains.java.oop.at.block.ContentNavigationCourseBlock;
 import ru.geekbrains.java.oop.at.page.content.base.ContentBasePage;
 
 import java.util.List;
-//TODO добавить lombok
 public class CoursePage extends ContentBasePage {
 
+    @Getter
     private ContentNavigationCourseBlock contentNavigationCourseBlock;
 
     @FindBy(xpath = "//form/ul//label")
@@ -23,22 +24,21 @@ public class CoursePage extends ContentBasePage {
     public CoursePage(WebDriver driver) {
         super(driver);
         this.contentNavigationCourseBlock = new ContentNavigationCourseBlock(driver);
-        //TODO вынести в наследование
-        PageFactory.initElements(driver, this);
     }
 
+    @Step("Настройка фильтра курсов: {args}")
     public CoursePage configFilter(String... args) {
-        for (String test : args) {
-            WebElement element = findElement(filterList, test);
+        for (String text : args) {
+            WebElement element = findElement(filterList, text);
             element.click();
         }
         return this;
     }
 
-    //TODO Step
+    @Step("Проверка отображения курсов: {args}")
     public CoursePage checkingDisplayedCourses(String... args) {
-        for (String test : args) {
-            WebElement element = findElement(courseList, test);
+        for (String text : args) {
+            WebElement element = findElement(courseList, text);
             wait10second.until(ExpectedConditions.visibilityOf(element));
         }
         return this;
@@ -50,7 +50,7 @@ public class CoursePage extends ContentBasePage {
 
     @Override
     public CoursePage openUrl() {
-        driver.get("https://geekbrains.ru/courses");
+        super.openUrl("https://geekbrains.ru/courses");
         return this;
     }
 }

@@ -5,6 +5,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.geekbrains.java.oop.at.base.BeforeAndAfterStep;
@@ -17,6 +19,7 @@ import static ru.geekbrains.java.oop.at.block.LeftNavigation.Button;
 @Feature("Навигация")
 @Story("Переход на страницы")
 @DisplayName("Переход на страницы")
+@Execution(ExecutionMode.CONCURRENT)
 public class LeftNavigationWebTest extends BeforeAndAfterStep {
 
     public static Stream<Button> stringProviderNotPopUp() {
@@ -36,7 +39,7 @@ public class LeftNavigationWebTest extends BeforeAndAfterStep {
         new TestPage(driver)
                 .openUrl()
                 .getLeftNavigation().clickButton(button)
-                .getHeader().checkNamePage(button.getText());
+                .getHeaderBlock().checkNamePage(button.getText());
     }
 
 
@@ -47,6 +50,6 @@ public class LeftNavigationWebTest extends BeforeAndAfterStep {
                 .openUrl()
                 .getLeftNavigation().clickButton(Button.POSTS)
                 .closedPopUp()
-                .getHeader().checkNamePage(Button.POSTS.getText());
+                .getHeaderBlock().checkNamePage(Button.POSTS.getText());
     }
 }

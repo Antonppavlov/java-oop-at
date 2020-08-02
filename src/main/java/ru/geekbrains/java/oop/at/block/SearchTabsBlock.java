@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import ru.geekbrains.java.oop.at.BasePageObject;
 import ru.geekbrains.java.oop.at.ButtonNotFoundException;
 
@@ -40,11 +39,9 @@ public class SearchTabsBlock extends BasePageObject {
 
     public SearchTabsBlock(WebDriver driver) {
         super(driver);
-        //TODO вынести в наследование
-        PageFactory.initElements(driver, this);
     }
 
-    //TODO Step
+    @Step("Нажатие на tab: {tab}")
     public void clickTab(Tab tab) {
         getTab(tab).click();
     }
@@ -87,7 +84,6 @@ public class SearchTabsBlock extends BasePageObject {
 //    В нашем случае позволяет определив в одном месте, использовать этот список везде в проекте.
 //    И не дать возможность пользователю допустить ошибку с названием кнопки
 
-    //TODO рассказать про Enum
     public enum Tab {
         EVERYWHERE("Везде"),
         PROFESSIONS("Профессии"),

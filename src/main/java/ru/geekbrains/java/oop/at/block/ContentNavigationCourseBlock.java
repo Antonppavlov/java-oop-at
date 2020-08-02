@@ -1,9 +1,9 @@
 package ru.geekbrains.java.oop.at.block;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import ru.geekbrains.java.oop.at.BasePageObject;
 import ru.geekbrains.java.oop.at.page.content.CoursePage;
 
@@ -23,11 +23,9 @@ public class ContentNavigationCourseBlock extends BasePageObject {
 
     public ContentNavigationCourseBlock(WebDriver driver) {
         super(driver);
-        //TODO вынести в наследование
-        PageFactory.initElements(driver, this);
     }
 
-    //TODO Step
+    @Step("Нажатие на tab: {tab}")
     public CoursePage clickTab(Tab tab) {
         switch (tab) {
             case PROFESSIONS: {

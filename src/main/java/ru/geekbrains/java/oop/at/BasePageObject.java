@@ -1,7 +1,9 @@
 package ru.geekbrains.java.oop.at;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -17,21 +19,26 @@ public abstract class BasePageObject {
         this.driver = driver;
         this.wait10second = new WebDriverWait(driver, 10);
         this.wait30second = new WebDriverWait(driver, 30);
+        PageFactory.initElements(driver, this);
     }
 
-    //TODO Step
-    //TODO рассказать про применение List<WebElement> list
+    @Step("Ишу в коллекции WebElement элемент с текстом: {expectedText}")
     protected WebElement findElement(List<WebElement> list, String expectedText) {
-        List<Object> arrayList = new ArrayList<>();
+        List<String> arrayList = new ArrayList<>();
+
         for (WebElement webElement : list) {
             String actualText = webElement.getText();
             arrayList.add(actualText);
+
             if (actualText.toLowerCase().trim().equals(expectedText.toLowerCase().trim())) {
                 return webElement;
             }
         }
+
         throw new RuntimeException("В коллекции элементов: " + arrayList + "\nНе найден элемент с текстом: " + expectedText);
     }
+
+
 
 }
 
