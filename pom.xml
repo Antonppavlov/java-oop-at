@@ -24,6 +24,8 @@
 
         <!--plugin versions-->
         <maven-surefire.version>2.22.2</maven-surefire.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <allure-reportVersion.version>2.13.0</allure-reportVersion.version>
     </properties>
 
 
@@ -67,9 +69,9 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.version}</version>
                 <configuration>
-                    <reportVersion>2.13.0</reportVersion>
+                    <reportVersion>${allure-reportVersion.version}</reportVersion>
                     <resultsDirectory>allure-results</resultsDirectory>
                 </configuration>
             </plugin>

@@ -4,8 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.geekbrains.java.oop.at.BasePageObject;
-import ru.geekbrains.java.oop.at.OpenUrl;
+import ru.geekbrains.java.oop.at.page.BasePageObject;
+import ru.geekbrains.java.oop.at.page.OpenUrl;
 import ru.geekbrains.java.oop.at.page.content.HomePage;
 
 public class AuthorizationPage extends BasePageObject implements OpenUrl {

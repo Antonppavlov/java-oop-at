@@ -26,7 +26,6 @@ public class SearchWebTest extends BeforeAndAfterStep {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
-
     @DisplayName("Проверка количества контента")
     @Test
     void searchTest() {

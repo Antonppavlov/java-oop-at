@@ -1,4 +1,4 @@
-package ru.geekbrains.java.oop.at;
+package ru.geekbrains.java.oop.at.utils;
 
 public class ButtonNotFoundException extends RuntimeException {
     public ButtonNotFoundException() {

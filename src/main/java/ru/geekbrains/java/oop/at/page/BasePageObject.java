@@ -1,4 +1,4 @@
-package ru.geekbrains.java.oop.at;
+package ru.geekbrains.java.oop.at.page;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
