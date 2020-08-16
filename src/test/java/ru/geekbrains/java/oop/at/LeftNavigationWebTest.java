@@ -5,6 +5,8 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.geekbrains.java.oop.at.base.BeforeAndAfterStep;
@@ -14,6 +16,7 @@ import java.util.stream.Stream;
 
 import static ru.geekbrains.java.oop.at.block.LeftNavigation.Button;
 
+@Execution(ExecutionMode.CONCURRENT)
 @Feature("Навигация")
 @Story("Переход на страницы")
 @DisplayName("Переход на страницы")
